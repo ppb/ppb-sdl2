@@ -11,6 +11,7 @@ import math
 from ppb import keycodes
 from ppb.events import KeyPressed, KeyReleased
 from dataclasses import dataclass
+import ppb.events as events
 
 
 class TargetSprite(ppb.Sprite):
@@ -131,3 +132,17 @@ class KeyBoardMovementSprite(ppb.Sprite):
             self.direction += ppb.Vector(0, -1)
         if key_event.key == self.key_bindings.down:
             self.direction += ppb.Vector(0, 1)
+
+class MouseCursorSprite(ppb.Sprite):
+    """Sprite that acts like a mouse cursor
+    """
+    def on_mouse_motion(self, event: events.MouseMotion, signal):
+        self.position = event.position
+
+class MouseTargetSprite(TargetSprite):
+    """Sprite that treats your mouse as a moving target
+    """
+    def on_mouse_motion(self, event: events.MouseMotion, signal):
+        self.target = event.position
+
+

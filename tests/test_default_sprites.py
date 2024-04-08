@@ -4,7 +4,10 @@ from ppb.features.default_sprites import (
     TargetSprite,
     wasd_direction_key_bindings,
     KeyBoardMovementSprite,
+    MouseCursorSprite,
+    MouseTargetSprite
 )
+import ppb.events as events
 
 
 def test_target_sprite_linear():
@@ -134,3 +137,22 @@ def test_keyboard_movement_sprite_move_down_left_wasd():
 
     assert keyboard_sprite.direction.isclose((-1, -1))
     assert keyboard_sprite.position.isclose((-1, -1))
+
+
+def test_mouse_target_sprite():
+    sprite = MouseTargetSprite()
+
+    mouse_position = Vector(123,456)
+    sprite.on_mouse_motion(events.MouseMotion(mouse_position,Vector(0,0),buttons=[]), lambda x:None)
+    assert sprite.target == mouse_position
+
+
+def test_mouse_cursor_sprite():
+    sprite = MouseCursorSprite()
+
+    mouse_position = Vector(123,456)
+    sprite.on_mouse_motion(events.MouseMotion(mouse_position,Vector(0,0),buttons=[]), lambda x:None)
+    assert sprite.position == mouse_position
+
+
+    

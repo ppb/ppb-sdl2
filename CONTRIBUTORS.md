@@ -57,4 +57,5 @@ Halle Jones|HJones@aliacy.com||
 [Avarice M](https://github.com/avarice-m) | | |
 [Jami Schwarzwalder](https://github.com/jschwarzwalder) | |
 [Jill Slind](https://github.com/jillslind) | [jill.slind@gmail.com](jill.slind@gmail.com) | |
-[David Lord](https://github.com/davidism) | |
+[Darrell Jenkins](https://github.com/darrellajenkins). | [darrellajenkins@gmail.com] (darrellajenkins@gmail.com). | |
+[David Lord](https://github.com/davidism) | | |

@@ -136,8 +136,16 @@ class KeyBoardMovementSprite(ppb.Sprite):
 class MouseCursorSprite(ppb.Sprite):
     """Sprite that acts like a mouse cursor
     """
+    def __init__(self, **props):
+        super().__init__(**props)
+        # we set the size to zero otherwise the sprite appears to teleport
+        # we store the initial size so we can put it back later, so the size parameter works as it should 
+        self._initial_size = self.size 
+        self.size = 0
+
     def on_mouse_motion(self, event: events.MouseMotion, signal):
         self.position = event.position
+        self.size = self._initial_size
 
 class MouseTargetSprite(TargetSprite):
     """Sprite that treats your mouse as a moving target

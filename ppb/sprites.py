@@ -442,3 +442,10 @@ class RectangleSprite(RectangleShapeMixin, RenderableMixin, RotatableMixin, Base
     with the mixins :class:`RotatableMixin`, :class:`RenderableMixin`, and
     :class:`RectangleShapeMixin`.
     """
+
+    def __image__(self):
+        image = super().__image__()
+        # Override the dimensions of the ``Image`` so that the missing shape
+        # matches this sprite's dimensions.
+        image._file_missing_dimensions = (self.width, self.height)
+        return image

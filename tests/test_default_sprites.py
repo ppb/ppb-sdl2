@@ -5,7 +5,6 @@ from ppb.features.default_sprites import (
     wasd_direction_key_bindings,
     KeyBoardMovementSprite,
 )
-from ppb.events import KeyPressed
 
 
 def test_target_sprite_linear():
@@ -56,9 +55,9 @@ def test_keyboard_movement_sprite_move_left():
         ppb.events.KeyPressed(key=ppb.keycodes.Left, mods={}),
         lambda x: None,
     )
-    assert keyboard_sprite.direction.isclose((-1, 0))
-
     keyboard_sprite.on_update(ppb.events.Update(1), lambda x: None)
+
+    assert keyboard_sprite.direction.isclose((-1, 0))
     assert keyboard_sprite.position.isclose((-1, 0))
 
 
@@ -70,10 +69,9 @@ def test_keyboard_movement_sprite_move_right():
         ppb.events.KeyPressed(key=ppb.keycodes.Right, mods={}),
         lambda x: None,
     )
+    keyboard_sprite.on_update(ppb.events.Update(1), lambda x: None)
 
     assert keyboard_sprite.direction.isclose((1, 0))
-
-    keyboard_sprite.on_update(ppb.events.Update(1), lambda x: None)
     assert keyboard_sprite.position.isclose((1, 0))
 
 
@@ -85,10 +83,9 @@ def test_keyboard_movement_sprite_move_up():
         ppb.events.KeyPressed(key=ppb.keycodes.Up, mods={}),
         lambda x: None,
     )
+    keyboard_sprite.on_update(ppb.events.Update(1), lambda x: None)
 
     assert keyboard_sprite.direction.isclose((0, 1))
-
-    keyboard_sprite.on_update(ppb.events.Update(1), lambda x: None)
     assert keyboard_sprite.position.isclose((0, 1))
 
 
@@ -100,10 +97,9 @@ def test_keyboard_movement_sprite_move_down():
         ppb.events.KeyPressed(key=ppb.keycodes.Down, mods={}),
         lambda x: None,
     )
+    keyboard_sprite.on_update(ppb.events.Update(1), lambda x: None)
 
     assert keyboard_sprite.direction.isclose((0, -1))
-
-    keyboard_sprite.on_update(ppb.events.Update(1), lambda x: None)
     assert keyboard_sprite.position.isclose((0, -1))
 
 
@@ -115,9 +111,9 @@ def test_keyboard_movement_sprite_move_down_wasd():
         ppb.events.KeyPressed(key=ppb.keycodes.S, mods={}),
         lambda x: None,
     )
+    keyboard_sprite.on_update(ppb.events.Update(1), lambda x: None)
 
     assert keyboard_sprite.direction.isclose((0, -1))
-    keyboard_sprite.on_update(ppb.events.Update(1), lambda x: None)
     assert keyboard_sprite.position.isclose((0, -1))
 
 
@@ -134,8 +130,7 @@ def test_keyboard_movement_sprite_move_down_left_wasd():
         ppb.events.KeyPressed(key=ppb.keycodes.A, mods={}),
         lambda x: None,
     )
+    keyboard_sprite.on_update(ppb.events.Update(1), lambda x: None)
 
     assert keyboard_sprite.direction.isclose((-1, -1))
-
-    keyboard_sprite.on_update(ppb.events.Update(1), lambda x: None)
     assert keyboard_sprite.position.isclose((-1, -1))

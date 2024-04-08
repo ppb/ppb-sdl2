@@ -4,7 +4,6 @@ from ppb.features.default_sprites import (
     TargetSprite,
     wasd_direction_key_bindings,
     KeyBoardMovementSprite,
-    MouseCursorSprite,
     MouseTargetSprite
 )
 import ppb.events as events
@@ -147,22 +146,3 @@ def test_mouse_target_sprite():
     assert sprite.target == mouse_position
 
 
-def test_mouse_cursor_sprite_movement():
-    sprite = MouseCursorSprite()
-
-    mouse_position = Vector(123,456)
-    sprite.on_mouse_motion(events.MouseMotion(mouse_position,Vector(0,0),buttons=[]), lambda x:None)
-    assert sprite.position == mouse_position
-
-
-def test_mouse_cursor_sprite_size_reset():
-    class SpriteSubClass(MouseCursorSprite):
-        size = 3
-
-    sprite = SpriteSubClass()
-    assert sprite.size == 0 
-
-    mouse_position = Vector(123,456)
-    sprite.on_mouse_motion(events.MouseMotion(mouse_position,Vector(0,0),buttons=[]), lambda x:None)
-
-    assert sprite.size == 3

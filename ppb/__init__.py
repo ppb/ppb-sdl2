@@ -60,12 +60,28 @@ from ppb.utils import get_time
 
 __all__ = (
     # Shortcuts
-    'Scene', 'Sprite', 'RectangleSprite', 'Vector',
-    'Image', 'Circle', 'Ellipse', 'Square', 'Rectangle', 'Triangle',
-    'Font', 'Text', 'Sound',
-    'events', 'buttons', 'keycodes', 'flags', 'directions', 'Signal',
+    "Scene",
+    "Sprite",
+    "RectangleSprite",
+    "Vector",
+    "Image",
+    "Circle",
+    "Ellipse",
+    "Square",
+    "Rectangle",
+    "Triangle",
+    "Font",
+    "Text",
+    "Sound",
+    "events",
+    "buttons",
+    "keycodes",
+    "flags",
+    "directions",
+    "Signal",
     # Local stuff
-    'run', 'make_engine',
+    "run",
+    "make_engine",
 )
 
 
@@ -76,13 +92,14 @@ def _make_kwargs(setup, title, engine_opts):
             "set_up": setup,
         },
         "window_title": title,
-        **engine_opts
+        **engine_opts,
     }
     return kwargs
 
 
-def _validate_python_support(required_version='3.7', ppb_release='2.0',
-                             release_date='June 2022'):
+def _validate_python_support(
+    required_version="3.7", ppb_release="2.0", release_date="June 2022"
+):
     """
     Verifies Supported Python Version.
 
@@ -96,17 +113,25 @@ def _validate_python_support(required_version='3.7', ppb_release='2.0',
     :type release_date: str
     """
     # Creates (Major, Minor) version tuples for comparisson
-    if version_info[0:2] <= tuple(map(int, required_version.split('.'))):
-        deprecation_message = f"PPB v{ppb_release} will no longer support "\
-                              f"Python {version_info[0]}.{version_info[1]} " \
-                              f"once released around {release_date}. Please " \
-                              f"update to Python {required_version} or newer."
-        warnings.filterwarnings('default')
+    if version_info[0:2] <= tuple(map(int, required_version.split("."))):
+        deprecation_message = (
+            f"PPB v{ppb_release} will no longer support "
+            f"Python {version_info[0]}.{version_info[1]} "
+            f"once released around {release_date}. Please "
+            f"update to Python {required_version} or newer."
+        )
+        warnings.filterwarnings("default")
         warnings.warn(deprecation_message, DeprecationWarning)
 
 
-def run(setup: Callable[[Scene], None] = None, *, log_level=logging.WARNING,
-        starting_scene=Scene, title="PursuedPyBear", **engine_opts):
+def run(
+    setup: Callable[[Scene], None] = None,
+    *,
+    log_level=logging.WARNING,
+    starting_scene=Scene,
+    title="PursuedPyBear",
+    **engine_opts,
+):
     """
     Run a game.
 
@@ -156,13 +181,19 @@ def run(setup: Callable[[Scene], None] = None, *, log_level=logging.WARNING,
 
     _validate_python_support()
 
-    with make_engine(setup, starting_scene=starting_scene, title=title, **engine_opts) as eng:
+    with make_engine(
+        setup, starting_scene=starting_scene, title=title, **engine_opts
+    ) as eng:
         eng.run()
 
 
-def make_engine(setup: Callable[[Scene], None] = None, *,
-                starting_scene=Scene, title="PursedPyBear",
-                **engine_opts):
+def make_engine(
+    setup: Callable[[Scene], None] = None,
+    *,
+    starting_scene=Scene,
+    title="PursedPyBear",
+    **engine_opts,
+):
     """
     Setup a :class:`GameEngine`.
 

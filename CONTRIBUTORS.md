@@ -57,3 +57,4 @@ Halle Jones|HJones@aliacy.com||
 [Avarice M](https://github.com/avarice-m) | | |
 [Jami Schwarzwalder](https://github.com/jschwarzwalder) | |
 [Jill Slind](https://github.com/jillslind) | [jill.slind@gmail.com](jill.slind@gmail.com) | |
+[Sheena O'Connell](https://github.com/sheenarbw) | [@sheena@fosstodon.org](https://fosstodon.org/@sheena) | [blog](https://sheenaoc.com/) |

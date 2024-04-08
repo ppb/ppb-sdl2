@@ -75,6 +75,11 @@ class Image(assets.Asset):
     not_found_message = "This may not be a problem, you can stop this warning by explicitly " \
                         "setting the `image` attribute on your Sprite subclass to an Image object."
 
+    _file_missing_dimensions = (1, 1)
+    """``RectangleSprite.__image__`` will override this to use its width and
+    height instead of the default, so that it is not a square shape.
+    """
+
     def background_parse(self, data):
         file = rw_from_object(io.BytesIO(data))
         # ^^^^ is a pure-python emulation, does not need cleanup.
@@ -91,7 +96,7 @@ class Image(assets.Asset):
         return surface
 
     def file_missing(self):
-        width = height = 70  # Pixels, arbitrary
+        width, height = self._file_missing_dimensions  # Pixels, arbitrary
         surface = sdl_call(
             SDL_CreateRGBSurface, 0, width, height, 32, 0, 0, 0, 0,
             _check_error=lambda rv: not rv

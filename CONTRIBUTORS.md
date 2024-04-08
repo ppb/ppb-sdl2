@@ -59,3 +59,4 @@ Halle Jones|HJones@aliacy.com||
 [Jill Slind](https://github.com/jillslind) | [jill.slind@gmail.com](jill.slind@gmail.com) | |
 [Darrell Jenkins](https://github.com/darrellajenkins). | [darrellajenkins@gmail.com] (darrellajenkins@gmail.com). | |
 [David Lord](https://github.com/davidism) | | |
+[Julie Fisher](https://github.com/julielinx) | | |

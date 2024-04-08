@@ -11,6 +11,7 @@ import math
 from ppb import keycodes
 from ppb.events import KeyPressed, KeyReleased
 from dataclasses import dataclass
+import ppb.events as events
 
 
 class TargetSprite(ppb.Sprite):
@@ -131,3 +132,15 @@ class KeyBoardMovementSprite(ppb.Sprite):
             self.direction += ppb.Vector(0, -1)
         if key_event.key == self.key_bindings.down:
             self.direction += ppb.Vector(0, 1)
+
+
+class MouseTargetSprite(TargetSprite):
+    """Sprite that treats your mouse as a moving target.
+
+    :param speed: Distance per second that the sprite travels with linear motion. 
+    If you set the speed to a high number (eg 100) then the sprite can act as a cursor. And if you set it to a lower number then it will chase the mouse menacingly 
+    """
+    def on_mouse_motion(self, event: events.MouseMotion, signal):
+        self.target = event.position
+
+

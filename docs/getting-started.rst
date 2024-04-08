@@ -155,7 +155,7 @@ Taking Control
 This is cool, but most people expect a game to be something you can interact
 with. Let's use keyboard controls to move our ``Player`` around. First things
 first, we have some new things we want to import:
-
+  
 ``main.py``::
 
    import ppb
@@ -166,6 +166,9 @@ These are the classes we'll want in the next section to work.
 
 The next step is we'll need to redo out ``Player`` class. Go ahead and delete
 it, and put this in its place:
+
+.. warning::
+   Make sure to delete the existing ``Player``
 
 ``main.py``::
 

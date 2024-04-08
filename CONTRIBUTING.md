@@ -79,12 +79,10 @@ commit that change and open a PR:
 
 The editable installation mode implies that the source code of PursuedPyBear being installed is available in a local directory. Once PursuedPyBear is installed in editable mode, users expect that changes to the PursuedPyBear python code in the local source tree become effective without the need of a new installation step. To do an editable installation:
 
-    mkdir ppb
-    python3 -m venv ppb-venv
-    source ppb-venv/bin/activate
-    cd ppb-venv
-    git clone https://github.com/ppb/pursuedpybear.git
+    git clone https://github.com/ppb/pursuedpybear
     cd pursuedpybear
+    python3 -m venv .venv
+    source .venv/bin/activate
     pip install --upgrade -r requirements-test.txt
     pip install --editable .
 

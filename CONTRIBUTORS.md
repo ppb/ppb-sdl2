@@ -60,3 +60,4 @@ Halle Jones|HJones@aliacy.com||
 [Darrell Jenkins](https://github.com/darrellajenkins). | [darrellajenkins@gmail.com] (darrellajenkins@gmail.com). | |
 [David Lord](https://github.com/davidism) | | |
 [Julie Fisher](https://github.com/julielinx) | | |
+[Sheena O'Connell](https://github.com/sheenarbw) | [@sheena@fosstodon.org](https://fosstodon.org/@sheena) | [blog](https://sheenaoc.com/) |

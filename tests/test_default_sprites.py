@@ -135,7 +135,7 @@ def test_keyboard_movement_sprite_move_down_left_wasd():
     keyboard_sprite.on_update(ppb.events.Update(1), lambda x: None)
 
     assert keyboard_sprite.direction.isclose((-1, -1))
-    assert keyboard_sprite.position.isclose((-1, -1))
+    assert keyboard_sprite.position.isclose((-1/2**.5, -1/2**.5))
 
 
 def test_mouse_target_sprite():

@@ -62,3 +62,4 @@ Halle Jones|HJones@aliacy.com||
 [Julie Fisher](https://github.com/julielinx) | | |
 [Sheena O'Connell](https://github.com/sheenarbw) | [@sheena@fosstodon.org](https://fosstodon.org/@sheena) | [blog](https://sheenaoc.com/) |
 [Quinn Redwoods](https://github.com/qredwoods) | | |
+[Jeff Epler](https://github.com/jepler) | | |

@@ -111,7 +111,8 @@ class KeyBoardMovementSprite(ppb.Sprite):
     key_bindings = arrow_direction_key_bindings
 
     def on_update(self, update_event, signal):
-        self.position += self.direction * self.speed * update_event.time_delta
+        displacement = self.direction.scale_to(self.speed * update_event.time_delta)
+        self.position += displacement
 
     def on_key_pressed(self, key_event: KeyPressed, signal):
         if key_event.key == self.key_bindings.left:

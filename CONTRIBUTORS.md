@@ -63,3 +63,4 @@ Halle Jones|HJones@aliacy.com||
 [Sheena O'Connell](https://github.com/sheenarbw) | [@sheena@fosstodon.org](https://fosstodon.org/@sheena) | [blog](https://sheenaoc.com/) |
 [Quinn Redwoods](https://github.com/qredwoods) | | |
 [Jeff Epler](https://github.com/jepler) | | |
+[Mary Clark](https://github.com/marymclark) | [me@maryclark.net](me@maryclark.net) | | 

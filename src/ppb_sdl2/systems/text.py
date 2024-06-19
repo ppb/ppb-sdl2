@@ -112,7 +112,7 @@ class Text(ChainingMixin, FreeingMixin, AbstractAsset):
     def __init__(self, txt, *, font, color=(0, 0, 0)):
         """
         :param txt: The text to display.
-        :param font: The font to use (a :py:class:`ppb.Font`)
+        :param font: The font to use (a :py:class:`ppb_sdl2.Font`)
         :param color: The color to use.
         """
         self.txt = txt

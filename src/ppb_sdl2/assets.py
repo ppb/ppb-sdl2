@@ -117,7 +117,7 @@ class Rectangle(Shape):
 
 class Square(Rectangle):
     """
-    A constructor for :class:`~ppb.Rectangle` that produces a square image.
+    A constructor for :class:`~ppb_sdl2.Rectangle` that produces a square image.
     """
 
     def __init__(self, r, g, b):
@@ -165,7 +165,7 @@ class Ellipse(Shape):
 
 
 class Circle(Ellipse):
-    """A convenience constructor for :class:`~ppb.Ellipse` that is a perfect circle."""
+    """A convenience constructor for :class:`~ppb_sdl2.Ellipse` that is a perfect circle."""
 
     def __init__(self, r, g, b):
         # This cuts out the aspect_ratio parameter

@@ -41,7 +41,7 @@ def get_time():
     Currently uses :func:`time.perf_counter` as the default timer.
     
     .. warning:: This is not a globally synchronized timer, it's just simply a system time. It is intended
-       to make sure all timers in ppb code use the same function.
+       to make sure all timers in ppb_sdl2 code use the same function.
     """
     return perf_counter()
 

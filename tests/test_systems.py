@@ -1,4 +1,4 @@
-from ppb.systems import Renderer
+from ppb_sdl2.systems import Renderer
 
 
 def test_calculate_new_size():

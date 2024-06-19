@@ -19,7 +19,7 @@ from ppb_vector import Vector
 import ppb.events as events
 import ppb.keycodes as keys
 
-from ppb.systems.sdl_utils import SdlSubSystem, sdl_call
+from ppb_sdl2.systems.sdl_utils import SdlSubSystem, sdl_call
 
 
 class EventPoller(SdlSubSystem):

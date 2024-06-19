@@ -50,25 +50,6 @@ def test_executor(clean_assets):
     assert pool._shutdown
 
 
-def test_loading(clean_assets):
-    a = Asset('ppb/engine.py')
-    engine = GameEngine(
-        AssetTestScene, basic_systems=[AssetLoadingSystem, Failer],
-        fail=lambda e: False, message=None, run_time=1,
-    )
-    with engine:
-        engine.start()
-        ats = engine.current_scene
-
-        engine.main_loop()
-
-        assert a.load()
-        print(vars(ats))
-        assert ats.ale.asset is a
-        assert ats.ale.total_loaded == 1
-        assert ats.ale.total_queued == 0
-
-
 # def test_loading_root():
 #     a = Asset(...)  # TODO: find a cross-platform target in $VENV/bin
 #     engine = GameEngine(Scene, basic_systems=[AssetLoadingSystem])
@@ -92,7 +73,7 @@ def test_missing_package(clean_assets):
 
 
 def test_missing_resource(clean_assets):
-    a = Asset('ppb/dont.touch.this')
+    a = Asset('ppb_sdl2/dont.touch.this')
     engine = GameEngine(
         AssetTestScene, basic_systems=[AssetLoadingSystem, Failer],
         fail=lambda e: False, message=None, run_time=1,
@@ -102,22 +83,6 @@ def test_missing_resource(clean_assets):
 
         with pytest.raises(FileNotFoundError):
             assert a.load()
-
-
-def test_parsing(clean_assets):
-    class Const(Asset):
-        def background_parse(self, data):
-            return "nah"
-
-    a = Const('ppb/flags.py')
-    engine = GameEngine(
-        AssetTestScene, basic_systems=[AssetLoadingSystem, Failer],
-        fail=lambda e: False, message=None, run_time=1,
-    )
-    with engine:
-        engine.start()
-
-        assert a.load() == "nah"
 
 
 def test_missing_parse(clean_assets):
@@ -136,22 +101,6 @@ def test_missing_parse(clean_assets):
         assert a.load() == "igotu"
 
 
-def test_instance_condense(clean_assets):
-    class SubAsset(Asset):
-        pass
-
-    a1 = Asset('ppb/engine.py')
-    a2 = Asset('ppb/engine.py')
-
-    a3 = Asset('ppb/scenes.py')
-
-    s1 = SubAsset('ppb/engine.py')
-
-    assert a1 is a2
-    assert a1 is not a3
-    assert a1 is not s1
-
-
 def test_free(clean_assets):
     free_called = False
 
@@ -163,7 +112,7 @@ def test_free(clean_assets):
             nonlocal free_called
             free_called = True
 
-    a = Const('ppb/utils.py')
+    a = Const('ppb_sdl2/utils.py')
     engine = GameEngine(
         AssetTestScene, basic_systems=[AssetLoadingSystem, Failer],
         fail=lambda e: False, message=None, run_time=1,
@@ -180,7 +129,7 @@ def test_free(clean_assets):
 
 
 def test_timeout(clean_assets):
-    a = Asset('ppb/utils.py')
+    a = Asset('ppb_sdl2/utils.py')
 
     with pytest.raises(concurrent.futures.TimeoutError):
         a.load(timeout=0.1)
@@ -231,9 +180,9 @@ def test_chained_big(clean_assets):
     a = Concat(
         b'\n',
         *(
-            Asset(f"ppb/{fname}")
-            for fname in ppb.vfs.iterdir('ppb')
-            if ppb.vfs.exists(f"ppb/{fname}")
+            Asset(f"ppb_sdl2/{fname}")
+            for fname in ppb.vfs.iterdir('ppb_sdl2')
+            if ppb.vfs.exists(f"ppb_sdl2/{fname}")
         )
     )
     engine = GameEngine(

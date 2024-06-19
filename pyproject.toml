@@ -7,7 +7,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 dynamic = ["version"]
-name = "ppb"
+name = "ppb_sdl2"
 authors = [
     {name = "Piper Thunstrom", email="pathunstrom@gmail.com"}
 ]
@@ -24,7 +24,6 @@ classifiers =[
     "License :: OSI Approved :: Artistic License",
     "Natural Language :: English",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
     "Programming Language :: Python :: 3.11",
@@ -33,18 +32,19 @@ classifiers =[
     "Topic :: Software Development :: Libraries",
     "Operating System :: OS Independent"
 ]
-requires-python = "> 3.8"
+requires-python = "> 3.9"
 dependencies = [
     "PySDL2",
     "pysdl2-dll",
+    "ppb",  # TODO: ppb-core
     "ppb-vector ~= 1.0",
     "Deprecated ~= 1.2.12"
 ]
 
 [project.urls]
 Homepage = "https://ppb.dev"
-Respository = "https://github.com/ppb/pursuedpybear"
-Issues = "https://github.com/ppb/pursuedpybear/issues"
+Respository = "https://github.com/ppb/ppb-sdl2"
+Issues = "https://github.com/ppb/ppb-sdl2/issues"
 
 [tool.setuptools_scm]
 local_scheme = "dirty-tag"

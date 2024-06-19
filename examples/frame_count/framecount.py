@@ -1,5 +1,5 @@
 """
-A simple test script to make sure the ppb.engine is behaving as expected.
+A simple test script to make sure the ppb_sdl2.engine is behaving as expected.
 
 At logging.INFO the primary output is a string:
 

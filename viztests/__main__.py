@@ -10,7 +10,7 @@ def get_docstring(path):
     return ast.get_docstring(tree)
 
 
-for script in Path(__file__).resolve().parent.glob('*.py'):
+for script in sorted(Path(__file__).resolve().parent.glob('*.py')):
     if script.name.startswith('_'):
         continue
     ds = get_docstring(script)

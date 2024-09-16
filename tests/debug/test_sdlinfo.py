@@ -1,4 +1,4 @@
-import ppb.debug.sdlinfo as sdlinfo
+import ppb_sdl2.sdlinfo as sdlinfo
 
 
 # This mostly tests that it doesn't crash

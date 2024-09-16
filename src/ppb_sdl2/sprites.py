@@ -4,7 +4,7 @@ A Renderable Mixin for rendering with ppb_sdl2.
 from inspect import getfile
 from pathlib import Path
 
-import ppb
+import ppb_sdl2.systems
 import ppb.gomlib
 
 __all__ = (
@@ -48,9 +48,9 @@ class RenderableMixin:
                 if Path(klassfile).name != '__init__.py':
                     prefix = prefix.parent
             if prefix == Path('.'):
-                self.image = ppb.Image(f"{klass.__name__.lower()}.png")
+                self.image = ppb_sdl2.systems.Image(f"{klass.__name__.lower()}.png")
             else:
-                self.image = ppb.Image(f"{prefix!s}/{klass.__name__.lower()}.png")
+                self.image = ppb_sdl2.systems.Image(f"{prefix!s}/{klass.__name__.lower()}.png")
         return self.image
 
 

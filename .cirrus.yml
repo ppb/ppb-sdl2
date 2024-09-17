@@ -91,11 +91,12 @@ macOS_task:
     # https://github.com/pyenv/pyenv/wiki#suggested-build-environment
     # - xcode-select --install  # Unnecessary on Cirrus
     - brew update    
-    - brew install openssl readline sqlite3 xz zlib pyenv
+    - brew install openssl readline sqlite3 xz zlib pyenv git
     - pyenv install ${PYTHON}
     - pyenv global ${PYTHON}
     - pyenv rehash
     - pip install --upgrade-strategy eager -U -r requirements-tests.txt
+    - pip install git+https://github.com/ppb/ppb-core.git
     - python .ci/install-wheels.py
 
   script:
@@ -137,6 +138,7 @@ task:
 
   install_script:
     - C:\Python\python.exe -m pip install --upgrade-strategy eager -U -r requirements-tests.txt
+    - C:\Python\python.exe -m pip install git+https://github.com/ppb/ppb-core.git
     - C:\Python\python.exe .ci/install-wheels.py
 
   script:

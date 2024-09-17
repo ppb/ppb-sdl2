@@ -138,7 +138,7 @@ task:
 
   install_script:
     - C:\Python\python.exe -m pip install --upgrade-strategy eager -U -r requirements-tests.txt
-    - C:\Python\python.exe -m pip install git+https://github.com/ppb/ppb-core.git
+    - C:\Python\python.exe -m pip install https://github.com/ppb/ppb-core/archive/refs/heads/canon.zip
     - C:\Python\python.exe .ci/install-wheels.py
 
   script:

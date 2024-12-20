@@ -1,27 +1,30 @@
 """
 """
-import ppb
+from ppb import Vector, GameEngine, Scene, RectangleSprite
+from ppb_sdl2.assets import Square
+from ppb_sdl2.sprites import Sprite
+from ppb_sdl2.systems import Image, Renderer, EventPoller
 
 
-class Square(ppb.sprites.RectangleSprite):
+class Square(Sprite, RectangleSprite):
     width = 1
     height = 4
 
-    image = ppb.Square(0, 0, 255)
+    image = Square(0, 0, 255)
 
 
-class Tall(ppb.sprites.RectangleSprite):
+class Tall(Sprite, RectangleSprite):
     width = 2
     height = 4
 
-    image = ppb.Image('resources/tall.png')
+    image = Image('resources/tall.png')
 
 
-class Wide(ppb.sprites.RectangleSprite):
+class Wide(Sprite, RectangleSprite):
     width = 4
     height = 2
 
-    image = ppb.Image('resources/wide.png')
+    image = Image('resources/wide.png')
 
 
 def setup(scene):
@@ -30,4 +33,5 @@ def setup(scene):
     scene.add(Tall(position=(4, 0)))
 
 
-ppb.run(setup=setup)
+with GameEngine(Scene, systems=[EventPoller, Renderer], scene_kwargs={"set_up": setup}, resolution=(800, 600)) as eng:
+    eng.run()

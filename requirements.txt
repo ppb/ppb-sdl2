@@ -1,5 +1,0 @@
-PySDL2
-pysdl2-dll
-ppb  # TODO: Make this ppb-core
-ppb-vector ~= 1.0
-Deprecated ~= 1.2.12

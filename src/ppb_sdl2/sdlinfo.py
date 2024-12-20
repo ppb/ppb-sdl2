@@ -7,7 +7,7 @@ import sdl2
 from sdl2 import sdlimage
 from sdl2 import sdlmixer
 
-from ppb.systems.sdl_utils import sdl_call
+from ppb_sdl2.systems.sdl_utils import sdl_call
 
 
 def sdl_version():

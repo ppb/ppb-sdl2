@@ -6,34 +6,38 @@ the yellow down arrows.
 """
 from itertools import cycle
 
-import ppb
+from ppb import Vector, events, GameEngine, Scene
+from ppb_sdl2.sprites import Sprite
+from ppb_sdl2.systems import Image, Renderer, EventPoller
 
 
-class Mover(ppb.Sprite):
-    image = ppb.Image("resources/mover.png")
-    position = ppb.Vector(0, -4)
-    velocity = ppb.Vector(0, 3)
+class Mover(Sprite):
+    image = Image("resources/mover.png")
+    position = Vector(0, -4)
+    velocity = Vector(0, 3)
 
-    def on_update(self, update: ppb.events.Update, signal):
+    def on_update(self, update: events.Update, signal):
         self.position += self.velocity * update.time_delta
         if self.position.y > 4 or self.position.y < -4:
             self.velocity *= -1
 
 
-class TravelOver(ppb.Sprite):
-    image = ppb.Image("resources/travel_over.png")
+class TravelOver(Sprite):
+    image = Image("resources/travel_over.png")
     layer = -1
 
 
-class TravelUnder(ppb.Sprite):
-    image = ppb.Image("resources/travel_under.png")
+class TravelUnder(Sprite):
+    image = Image("resources/travel_under.png")
     layer = 1
 
 
 def setup(scene):
+    print(f"setup {scene=}")
     scene.add(Mover())
     for x, klass in zip(range(-3, 4), cycle((TravelOver, TravelUnder))):
-        scene.add(klass(position=ppb.Vector(0, x)))
+        scene.add(klass(position=Vector(0, x)))
 
 
-ppb.run(setup)
+with GameEngine(Scene, systems=[EventPoller, Renderer], scene_kwargs={"set_up": setup}, resolution=(800, 600)) as eng:
+    eng.run()

@@ -138,7 +138,7 @@ task:
 
   install_script:
     - C:\Python\python.exe -m pip install --upgrade-strategy eager -U -r requirements-tests.txt
-    - C:\Python\python.exe -m pip install git+https://github.com/user/proj.git#egg=proj
+    - C:\Python\python.exe -m pip install git+https://github.com/ppb/ppb-core.git#egg=ppb-core
     - C:\Python\python.exe .ci/install-wheels.py
 
   script:

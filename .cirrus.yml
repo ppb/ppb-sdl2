@@ -151,9 +151,13 @@ upload_task:
     - pep517
     - Tests
   env:
-    TWINE_TEST_TOKEN: "ENCRYPTED[4df6a9281bcbab67052d63d8ba4f5ee404d57fd95158e0e6e8693ac6b6ae0e2f2ec0ae8ac09a1fe9998b4675d6ccd7c2]"
-    TWINE_PROD_TOKEN: "ENCRYPTED[7ea667df4087e85f59575b59f07b2ef8da992831d45e0a0c60869aed64be252e4373b45b6a9f323a6a6365337bac0a7e]"
-    GITHUB_TOKEN: "ENCRYPTED[a74d247869abeaff81e517d2c4d9da8ea7c97105dbe05d2392c4b1903c31547f433b5fe4a3ecbf17d638e407934dee75]"
+    # Encrypt at https://cirrus-ci.com/settings/repository/5170617228460032
+    # https://test.pypi.org/manage/account/token/
+    TWINE_TEST_TOKEN: "ENCRYPTED[0b51bffd26202987a4720bb9f1d75a9c754aa956520e23157b0bc7ae23730adde6496319e285ff205f1642aa4a17e371]"
+    # https://pypi.org/manage/account/token/
+    TWINE_PROD_TOKEN: "ENCRYPTED[e0de21037aee83a1a486ceeb228722831abf7ad26619c8b414d41c2c0f86340814e79691e48b09ee96b2834199b96e15]"
+    # https://github.com/settings/tokens
+    GITHUB_TOKEN: "ENCRYPTED[456d4343a400793d742afe6d1a3233241832276ef3eabc260d6f3923b3449d7b13b5bd8532722b3a9ab9d13862d58e34]"
 
   container:
     image: xonsh/xonsh:slim

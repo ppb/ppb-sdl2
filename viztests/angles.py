@@ -4,21 +4,23 @@ Tests rotation vs Vector angles
 The center sprite should always face the orbiting sprite, and they should be
 moving counter-clockwise.
 """
-import ppb
+from ppb import Vector, GameEngine, Scene
+from ppb_sdl2.sprites import Sprite
+from ppb_sdl2.systems import Image, Renderer, EventPoller
 
 ROTATION_RATE = 90
 
 
-class CenterSprite(ppb.Sprite):
-    image = ppb.Image('player.png')
+class CenterSprite(Sprite):
+    image = Image('player.png')
 
     def on_update(self, event, signal):
         self.rotate(ROTATION_RATE * event.time_delta)
 
 
-class OrbitSprite(ppb.Sprite):
-    position = ppb.Vector(0, -2)
-    image = ppb.Image('target.png')
+class OrbitSprite(Sprite):
+    position = Vector(0, -2)
+    image = Image('target.png')
 
     def on_update(self, event, signal):
         self.position = self.position.rotate(ROTATION_RATE * event.time_delta)
@@ -29,4 +31,5 @@ def setup(scene):
     scene.add(OrbitSprite())
 
 
-ppb.run(setup)
+with GameEngine(Scene, systems=[EventPoller, Renderer], scene_kwargs={"set_up": setup}, resolution=(800, 600)) as eng:
+    eng.run()

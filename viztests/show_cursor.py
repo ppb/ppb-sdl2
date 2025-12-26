@@ -8,24 +8,30 @@ The scene order:
    4. Black background, visible cursor. (When this scene continues, it sets itself to end the program on click.)
 """
 
-import ppb
+from ppb import Vector, GameEngine, Scene, events, RectangleSprite
+from ppb_sdl2.sprites import Sprite
+from ppb_sdl2.systems import Image, Renderer, EventPoller, Font, Text
 
-font = ppb.Font("resources/ubuntu_font/Ubuntu-R.ttf", size=32)
+font = Font("resources/ubuntu_font/Ubuntu-R.ttf", size=32)
 
 no_cursor = "No cursor should be visible."
 cursor = "Cursor should be visible."
 
 
-class RootScene(ppb.Scene):
+class RSprite(Sprite, RectangleSprite):
+    pass
+
+
+class RootScene(Scene):
     cursor = [no_cursor, cursor]
     _continue = "Click to continue."
-    click_event = ppb.events.StopScene()
+    click_event = events.StopScene()
 
     def on_scene_started(self, _, __):
         cursor_state = getattr(self, "show_cursor", True)
         self.add(
-            ppb.RectangleSprite(
-                image=ppb.Text(
+            RSprite(
+                image=Text(
                     " ".join((self.cursor[cursor_state], self._continue)),
                     font=font,
                     color=(255, 255, 255)
@@ -33,9 +39,8 @@ class RootScene(ppb.Scene):
             )
         )
 
-    def on_button_pressed(self, event:ppb.events.ButtonPressed, signal):
+    def on_button_pressed(self, event: events.ButtonPressed, signal):
         signal(self.click_event)
-
 
 
 class NoCursorScene(RootScene):
@@ -44,15 +49,17 @@ class NoCursorScene(RootScene):
 
 
 class DefaultScene(RootScene):
-    click_event = ppb.events.ReplaceScene(NoCursorScene)
+    click_event = events.ReplaceScene(NoCursorScene)
 
 
 class ExplicitVisibleCursor(RootScene):
     background_color = (0, 0, 0)
     show_cursor = True
-    click_event = ppb.events.StartScene(DefaultScene)
+    click_event = events.StartScene(DefaultScene)
 
     def on_scene_continued(self, _, __):
-        self.click_event = ppb.events.StopScene()
+        self.click_event = events.StopScene()
 
-ppb.run(None, starting_scene=ExplicitVisibleCursor)
+
+with GameEngine(ExplicitVisibleCursor, systems=[EventPoller, Renderer], resolution=(800, 600)) as eng:
+    eng.run()

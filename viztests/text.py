@@ -6,22 +6,24 @@ should be no color jaggies.
 """
 import colorsys
 
-import ppb
+from ppb import Vector, GameEngine, Scene
+from ppb_sdl2.sprites import Sprite
+from ppb_sdl2.systems import Image, Renderer, EventPoller, Text, Font
 
 
 def hsv2rgb(h, s, v):
     return list(map(int, colorsys.hsv_to_rgb(h, s, v)))
 
 
-class TextScene(ppb.Scene):
+class TextScene(Scene):
     elapsed = 0
 
     def on_scene_started(self, event, signal):
         for i, font in enumerate(('B', 'BI', 'C', 'L', 'LI', 'M', 'MI', 'R', 'RI', 'Th')):
-            self.add(ppb.Sprite(
-                image=ppb.Text(
+            self.add(Sprite(
+                image=Text(
                     "Hello, PPB!",
-                    font=ppb.Font(f"resources/ubuntu_font/Ubuntu-{font}.ttf", size=72),
+                    font=Font(f"resources/ubuntu_font/Ubuntu-{font}.ttf", size=72),
                     color=hsv2rgb(i / 10, 1.0, 75)
                 ),
                 position=(0, i-4.5),
@@ -32,4 +34,5 @@ class TextScene(ppb.Scene):
         self.background_color = hsv2rgb(self.elapsed / 10, 1.0, 200)
 
 
-ppb.run(starting_scene=TextScene)
+with GameEngine(TextScene, systems=[EventPoller, Renderer], resolution=(800, 600)) as eng:
+    eng.run()

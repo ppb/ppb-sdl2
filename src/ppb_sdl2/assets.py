@@ -21,7 +21,7 @@ from sdl2.sdlgfx import (
 )
 
 from ppb.assetlib import BackgroundMixin, FreeingMixin, AbstractAsset
-from ppb.systems.sdl_utils import sdl_call
+from ppb_sdl2.systems.sdl_utils import sdl_call
 
 __all__ = (
     "Rectangle",

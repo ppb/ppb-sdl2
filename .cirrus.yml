@@ -45,11 +45,13 @@ task:
 
   install_script:
     - >-
+      apt update || true;
+      apt install -qq -y git;
       if command -v pypy3 >/dev/null || python3 -c 'import sys; exit(sys.implementation.version.releaselevel == "final")'; then
-        apt update || true;
         apt install -qq -y pkgconf libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev libsdl1.2-dev libsmpeg-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev libfreetype6-dev gcc
       fi
     - pip install --upgrade-strategy eager -U -r requirements-tests.txt
+    - pip install git+https://github.com/ppb/ppb-core.git
     - >-
       if command -v pypy3 >/dev/null; then
         pypy3 .ci/install-wheels.py
@@ -89,11 +91,12 @@ macOS_task:
     # https://github.com/pyenv/pyenv/wiki#suggested-build-environment
     # - xcode-select --install  # Unnecessary on Cirrus
     - brew update    
-    - brew install openssl readline sqlite3 xz zlib pyenv
+    - brew install openssl readline sqlite3 xz zlib pyenv git
     - pyenv install ${PYTHON}
     - pyenv global ${PYTHON}
     - pyenv rehash
     - pip install --upgrade-strategy eager -U -r requirements-tests.txt
+    - pip install git+https://github.com/ppb/ppb-core.git
     - python .ci/install-wheels.py
 
   script:
@@ -134,7 +137,9 @@ task:
       - IMAGE: python:rc-windowsservercore
 
   install_script:
+    - choco install git
     - C:\Python\python.exe -m pip install --upgrade-strategy eager -U -r requirements-tests.txt
+    - C:\Python\python.exe -m pip install git+https://github.com/ppb/ppb-core.git#egg=ppb-core
     - C:\Python\python.exe .ci/install-wheels.py
 
   script:

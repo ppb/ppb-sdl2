@@ -4,25 +4,24 @@ complete without error.
 
 NOTE: Does not open a window.
 """
-import ppb
+from ppb import GameEngine, Scene, events
+from ppb_sdl2.systems import SoundController, Sound
 
-
-class Scene(ppb.Scene):
-    sound = ppb.Sound("laser1.ogg")
+class SoundScene(Scene):
+    sound = Sound("laser1.ogg")
     running = 0
     lifespan = 4
 
     def on_scene_started(self, event, signal):
         print("Scene start")
         for _ in range(17):
-            signal(ppb.events.PlaySound(sound=self.sound))
+            signal(events.PlaySound(sound=self.sound))
 
     def on_update(self, event, signal):
         self.running += event.time_delta
         if self.running > self.lifespan:
-            signal(ppb.events.Quit())
+            signal(events.Quit())
 
 
-ppb.run(starting_scene=Scene, basic_systems=(
-    ppb.systems.Updater, ppb.systems.SoundController, ppb.assetlib.AssetLoadingSystem
-))
+with GameEngine(SoundScene, systems=[SoundController], resolution=(800, 600)) as eng:
+    eng.run()
